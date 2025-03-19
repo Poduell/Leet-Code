@@ -1,0 +1,23 @@
+class Solution {
+    public int uniquePaths(int m, int n) {
+        int[][]wet=new int[m][n];
+        wet[0][0]=0;
+        if(m==1||n==1)return 1;
+        else{
+            wet[0][1]=1;
+            wet[1][0]=1;
+            for(int i=0;i<m;i++){
+                for(int j=0;j<n;j++){
+                    if(i==0||j==0){
+                        wet[i][j]=1;
+                    }
+                    else{
+                        wet[i][j]=wet[i-1][j]+wet[i][j-1];
+                    }
+                    
+                }
+            }
+        }
+        return wet[m-1][n-1];
+    }
+}//到达每一步的方案由到达其左和其上的方案的总和
