@@ -1,0 +1,17 @@
+class Solution {
+    public int minCostClimbingStairs(int[] cost) {
+        int cost1=0;
+        int a=0;
+        int b=0;
+        if (cost.length==0)return 0;
+        else if(cost.length==1)return cost[0];
+        else{
+            int[] dp = new int[cost.length + 1];
+        for (int i = 2; i <= cost.length; i++) {
+            dp[i] = Math.min(dp[i - 1] + cost[i - 1], dp[i - 2] + cost[i - 2]);
+        }
+        return dp[cost.length];
+        }
+
+    }
+}//计算到第n阶的前缀和，一共两种方式：从n-2处爬2或者n-1处爬1
