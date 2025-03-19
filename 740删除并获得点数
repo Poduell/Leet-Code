@@ -1,0 +1,26 @@
+class Solution {
+    public int deleteAndEarn(int[] nums) {
+
+        int maxVal = 0;
+        for (int val : nums) {
+            maxVal = Math.max(maxVal, val);
+        }
+        int[] sum = new int[maxVal + 1];
+        for (int val : nums) {
+            sum[val] += val;
+        }
+        return rob(sum);
+    }
+
+    public int rob(int[] nums) {
+        int size = nums.length;
+                int[]cost=new int[size+1];
+        cost[0] = nums[0];
+        cost[1] = Math.max(nums[0], nums[1]);
+
+        for (int i = 2; i < size; i++) {
+            cost[i] = Math.max(cost[i-2] + nums[i], cost[i-1]);
+        }
+        return cost[size-1];
+    }
+}//对比n乘n个数和n-1,n+1乘各自个数之和的大小
