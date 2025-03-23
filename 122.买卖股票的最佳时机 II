@@ -1,0 +1,15 @@
+ public int maxProfit(int[] prices) {
+        
+        
+        int sum=0;
+        int n=prices.length;
+        if(n==0){
+            return 0;
+        }
+        for(int min=0;min<n-1;min++){
+            if(prices[min+1]>prices[min]){
+                sum+=prices[min+1]-prices[min];
+            }
+        }
+        return sum;
+    }//贪心
