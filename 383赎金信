@@ -1,0 +1,22 @@
+class Solution {
+    public boolean canConstruct(String ransomNote, String magazine) {
+        if (ransomNote.length() > magazine.length()) {
+            return false;
+        }
+        List<Character> list=new ArrayList<>();
+        int r=ransomNote.length();
+        int m=magazine.length();
+        for(int i=0;i<m;i++){
+            list.add(magazine.charAt(i));
+        }
+        for(int i=0;i<r;i++){
+            char miao=ransomNote.charAt(i);
+            if(list.contains(miao)){
+                list.remove(list.indexOf(miao));
+            }
+            else return false;
+        }
+        return true;
+    }
+}
+
