@@ -1,0 +1,74 @@
+class Solution {
+    public String intToRoman(int num) {
+        String s="";
+        int m=num/1000;
+        for(int i=0;i<m;i++){
+            s=s+"M";
+        }
+        num=num%1000;
+        m=num/900;
+        for(int i=0;i<m;i++){
+            s=s+"CM";
+        }
+        num=num%900;
+        m=num/500;
+        for(int i=0;i<m;i++){
+            s=s+"D";
+        }
+        num=num%500;
+        m=num/400;
+        for(int i=0;i<m;i++){
+            s=s+"CD";
+        }
+        num=num%400;
+        m=num/100;
+        for(int i=0;i<m;i++){
+            s=s+"C";
+        }
+        num=num%100;
+        m=num/90;
+        for(int i=0;i<m;i++){
+            s=s+"XC";
+        }
+        num=num%90;
+        m=num/50;
+        for(int i=0;i<m;i++){
+            s=s+"L";
+        }
+        num=num%50;
+        m=num/40;
+        for(int i=0;i<m;i++){
+            s=s+"XL";
+        }
+        num=num%40;
+        m=num/10;
+        for(int i=0;i<m;i++){
+            s=s+"X";
+        }
+        num=num%10;
+
+        m=num/9;
+        for(int i=0;i<m;i++){
+            s=s+"IX";
+        }
+        num=num%9;
+
+        m=num/5;
+        for(int i=0;i<m;i++){
+            s=s+"V";
+        }
+        num=num%5;
+
+        m=num/4;
+        for(int i=0;i<m;i++){
+            s=s+"IV";
+        }
+        num=num%4;
+
+        m=num/1;
+        for(int i=0;i<m;i++){
+            s=s+"I";
+        }
+        return s;
+    }
+}
