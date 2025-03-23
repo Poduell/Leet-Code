@@ -1,0 +1,23 @@
+class Solution {
+    public int[] productExceptSelf(int[] nums) {
+        int[] sum=new int[nums.length];
+        int lex=1;
+        for(int i=0;i<nums.length;i++){
+            
+            
+                sum[i]=lex;
+                lex=lex*nums[i];
+            
+        }
+        lex=1;
+        for(int i=nums.length-1;i>=0;i--){
+            
+            
+                sum[i]=sum[i]*lex;
+                lex=lex*nums[i];
+            
+        }
+
+        return sum;
+    }
+}//前缀集
