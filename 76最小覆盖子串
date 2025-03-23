@@ -1,0 +1,60 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+class Solution {
+    public static String minWindow(String s, String t) {
+        String result = "";
+        if (s.length() < t.length()) return result;
+
+        // 特殊情况处理
+        if (t.length() == 1) {
+            return s.contains(t) ? t : result;
+        }
+
+        // 如果 s 和 t 长度相同，直接比较排序后的字符数组
+        if (s.length() == t.length()) {
+            char[] e1 = s.toCharArray();
+            char[] e2 = t.toCharArray();
+            Arrays.sort(e1);
+            Arrays.sort(e2);
+            return Arrays.equals(e1, e2) ? s : result;
+        }
+
+        List<Character> list = new ArrayList<>();
+        int sl = s.length();
+        int tl = t.length();
+        for (int i = 0; i < tl; i++) {
+            list.add(t.charAt(i));
+        }
+
+        String max = "";
+        int l = Integer.MAX_VALUE;
+
+        for (int i = 0; i <= sl - tl; i++) {
+            List<Character> listnow = new ArrayList<>(list);
+            StringBuilder listadd = new StringBuilder();
+            for (int j = i; j < sl; j++) {
+                char haha = s.charAt(j);
+                listadd.append(haha);
+                if (listadd.length() >= l) {
+                    break;
+                }
+                if (listnow.contains(haha)) {
+                    listnow.remove((Character) haha);
+                    if (listnow.isEmpty()) {
+                        if (l > listadd.length()) {
+                            max = listadd.toString();
+                            l = max.length();
+                        }
+                        break; // 找到匹配后立即跳出内层循环
+                    }
+                }
+            }
+        }
+
+        return max;
+    }
+
+
+}
