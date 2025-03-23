@@ -1,0 +1,29 @@
+class Solution {
+    public int hIndex(int[] citations) {
+        //h肯定小于总论文篇数，取一个总论文篇数+1的数组，每次被引用的时候如果大于论文数则所有篇数int+1，不大于则
+        //小于等于引用的篇数int+1，最后遍历数组找最大值
+        int[] h=new int[citations.length+1];
+        int all=0;//给每篇都加的因子
+        int sum=0;
+        int index=0;
+        for(int i=0;i<citations.length;i++){
+            if(citations[i]>citations.length){
+                all++;
+            }
+            else{
+                for(int j=0;j<=citations[i];j++){
+                    h[j]++;
+                }
+            }
+        }
+        for(int j=1;j<=citations.length;j++){
+            h[j]+=all;
+            if(h[j]>=j){
+                sum=h[j];
+                index=j;
+            }
+        }
+        
+        return index;
+    }
+}
