@@ -1,0 +1,30 @@
+class Solution {
+    public boolean isPalindrome(String s) {
+        int n = s.length();
+        StringBuilder cleaned = new StringBuilder();
+        
+        // 过滤非字母字符并转换为小写
+        for (int i = 0; i < n; i++) {
+            char c = s.charAt(i);
+            if (Character.isLetterOrDigit(c)) { // 包括字母和数字
+                cleaned.append(Character.toLowerCase(c));
+            }
+        }
+        
+        String newStr = cleaned.toString();
+        int len = newStr.length();
+        
+        // 检查是否为空或单字符
+        if (len == 0 || len == 1) {
+            return true;
+        }
+        
+        // 检查回文
+        for (int i = 0; i < len / 2; i++) {
+            if (newStr.charAt(i) != newStr.charAt(len - 1 - i)) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
