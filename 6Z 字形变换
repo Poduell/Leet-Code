@@ -1,0 +1,27 @@
+class Solution {
+    public String convert(String s, int numRows) {
+        if(numRows==1)return s;
+        int xulie=numRows*2-2;//多少个字符为循环
+        int n=s.length();
+        String[] str=new String[numRows];
+        for(int i=0;i<str.length;i++){
+            str[i]="";
+        }
+        for(int i=0;i<n;i++){
+            int miu=i%xulie;
+            if(miu<numRows){
+                str[miu]=str[miu]+""+s.charAt(i);
+            }else{
+                int u=numRows*2-miu-2;
+                str[u]=str[u]+""+s.charAt(i);
+            }
+        }
+        String i5="";
+        for(int i=0;i<str.length;i++){
+            if(str[i]!=null){
+            i5=i5+str[i];
+            }
+        }
+        return i5;
+    }
+}
