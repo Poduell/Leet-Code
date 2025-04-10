@@ -1,0 +1,37 @@
+class Solution {
+    public ListNode swapPairs(ListNode head) {
+        // 处理空链表或单节点链表的情况
+        if (head == null || head.next == null) {
+            return head;
+        }
+        
+        // 保存新的头节点（原第二个节点）
+        ListNode copy = head.next;
+        ListNode yi = head;
+        ListNode er = head.next;
+        
+        // 初始交换
+        yi.next = er.next;
+        er.next = yi;
+        ListNode prev = yi;  // 记录前一个对的尾节点
+        head = yi.next;      // 移动到下一对
+        
+        while (head != null && head.next != null) {
+            yi = head;
+            er = head.next;
+            
+            // 交换当前对
+            yi.next = er.next;
+            er.next = yi;
+            
+            // 连接前一对和后一对
+            prev.next = er;
+            prev = yi;
+            
+            // 移动到下一对
+            head = yi.next;
+        }
+        
+        return copy;
+    }
+}
