@@ -1,0 +1,44 @@
+class Solution {
+    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+        if(list1 == null) return list2;
+        if(list2 == null) return list1;
+        
+        ListNode result;
+        ListNode head1 = list1;
+        ListNode head2 = list2;
+        
+        // 确定头节点
+        if(head1.val > head2.val) {
+            result = head2;
+            head2 = head2.next;
+        }
+        else {
+            result = head1;
+            head1 = head1.next;
+        }
+        ListNode copy = result;
+        
+        // 合并过程
+        while(head1 != null && head2 != null) {
+            if(head1.val > head2.val) {
+                result.next = head2;
+                head2 = head2.next;
+            }
+            else {
+                result.next = head1;
+                head1 = head1.next;
+            }
+            result = result.next;
+        }
+        
+        // 处理剩余节点
+        if(head1 != null) {
+            result.next = head1;
+        }
+        else {
+            result.next = head2;
+        }
+        
+        return copy;
+    }
+}
