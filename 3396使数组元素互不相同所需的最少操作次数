@@ -1,0 +1,17 @@
+class Solution {
+    public int minimumOperations(int[] nums) {
+        int index=-1;
+        Set<Integer> set=new HashSet<>();
+        for(int i=nums.length-1;i>=0;i--){
+            if(set.contains(nums[i])){
+                index=i;
+                
+                break;
+            }
+            set.add(nums[i]);
+        }
+        index=(index+3)/3;
+        System.out.print(5/3);
+        return index;
+    }
+}
