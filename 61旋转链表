@@ -29,4 +29,27 @@ class Solution {
         }
         return copy.next;
     }
-}
+}//队列添加
+
+
+class Solution {
+    public ListNode rotateRight(ListNode head, int k) {
+        if (head == null || head.next == null || k == 0) {
+            return head;
+        }
+        
+        List<ListNode> list=new ArrayList<>();
+        while(head!=null){
+            ListNode node=head;
+            list.add(node);
+            head=head.next;
+
+        }
+        k=k%list.size();
+        if(k==0)return list.get(0);
+        list.get(list.size()-1-k).next=null;
+        list.get(list.size()-1).next=list.get(0);
+        
+        return list.get(list.size()-k);
+    }
+}//直接改指针
