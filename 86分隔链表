@@ -1,0 +1,28 @@
+class Solution {
+    public ListNode partition(ListNode head, int x) {
+        Queue<ListNode> xiaoyu=new LinkedList<>();
+        Queue<ListNode> dayu=new LinkedList<>();
+        while(head!=null){
+            ListNode node=head;
+            if(node.val<x){
+                xiaoyu.add(node);
+            }
+            else{
+                dayu.add(node);
+            }
+            head=head.next;
+        }
+        ListNode dummy=new ListNode(0);
+        ListNode copy=dummy;
+        while(!xiaoyu.isEmpty()){
+            dummy.next=xiaoyu.poll();
+            dummy=dummy.next;
+        }
+        while(!dayu.isEmpty()){
+            dummy.next=dayu.poll();
+            dummy=dummy.next;
+        }
+        dummy.next=null;
+        return copy.next;
+    }
+}
