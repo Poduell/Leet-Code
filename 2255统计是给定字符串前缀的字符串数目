@@ -1,0 +1,15 @@
+class Solution {
+    public int countPrefixes(String[] words, String s) {
+        int sum=0;
+        for(String str:words){
+            if(str.length()>s.length()){
+                continue;
+            }
+            String sub=s.substring(0,str.length());
+            if(sub.equals(str)){
+                sum++;
+            }
+        }
+        return sum;
+    }
+}
