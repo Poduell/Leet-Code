@@ -1,0 +1,13 @@
+class Solution {
+    public int percentageLetter(String s, char letter) {
+        int fenmu=s.length();
+        int fenzi=0;
+        for(int i=0;i<fenmu;i++){
+            if(s.charAt(i)==letter){
+                fenzi++;
+            }
+        }
+        fenzi*=100;
+        return fenzi/fenmu;
+    }
+}
