@@ -1,16 +1,20 @@
 class Solution {
     public int jump(int[] nums) {
-        int length = nums.length;
-        int end = 0;
-        int maxPosition = 0; 
-        int steps = 0;
-        for (int i = 0; i < length - 1; i++) {
-            maxPosition = Math.max(maxPosition, i + nums[i]); 
-            if (i == end) {
-                end = maxPosition;
-                steps++;
+        if (nums.length == 1) return 0;
+        int step = 0;
+        int leng = 0;
+        int reach = 0;
+        if(reach>nums.length-1)return 1;
+        for (int i = 0; i < nums.length; i++) {
+            reach = Math.max(reach, i + nums[i]);
+            if (i == leng) {
+                step++;
+                leng = reach;
+                if (reach >= nums.length - 1) {
+                break;
+                }
             }
         }
-        return steps;
+        return step;
     }
 }
