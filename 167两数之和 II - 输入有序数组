@@ -4,19 +4,15 @@ class Solution {
         int right=numbers.length-1;
         int[] m=new int[2];
         while(left<right){
-            int sum=numbers[left]+numbers[right];
-            if(sum<target){
-                left++;
-            }else if(sum>target){
-                right--;
-            }
-            else {
-                
+            if(numbers[left]+numbers[right]==target){
                 m[0]=left+1;
                 m[1]=right+1;
-                
-                return m;
+                break;
             }
+            if(numbers[left]+numbers[right]<target){
+                left++;
+            }
+            else right--;
         }
         return m;
     }
